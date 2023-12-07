@@ -1,4 +1,4 @@
-<!--<!doctype html>
+<!doctype html>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -78,92 +78,4 @@
             <a-camera gps-camera rotation-reader></a-camera>
         </a-scene>
     </body>
-</html> -->
-
-<!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-        <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-        <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
-    </head>
-
-    <body style="margin: 0; overflow: hidden;">
-        <script>
-            AFRAME.registerComponent('locationfinder',{
-                init : function(){
-                    navigator.geolocation.getCurrentPosition(function(location){
-                        console.log(location);
-                    });
-                }
-            });
-        </script>
-        
-        <a-scene embedded arjs="source: webcam;">
-            <!--<a-camera 
-                gps-camera="simulateLatitude:24.7919979;simulateLongitude:120.9658050"
-                rotation-reader
-            >-->
-            <a-camera 
-                gps-camera="simulateLatitude:24.792704;simulateLongitude:120.965225"
-                rotation-reader
-            >
-            
-            <a-camera>
-            
-            <!--<a-text
-                value="Patung diponogoro" 
-                scale="15 15 15"
-                look-at="[gps-camera]"
-                align="center"
-                gps-entity-place="latitude:24.7919979;longitude:120.9658050;"
-            ></a-text>  -->
-
-            <!--<a-text
-                value="Patung Kartini" 
-                scale="15 15 15"
-                look-at="[gps-camera]"
-                align="center"
-                gps-entity-place="latitude:24.7920320;longitude:120.9659780;"
-            ></a-text> -->
-
-            <!--<a-text
-                value="Patung Thamrin" 
-                scale="15 15 15"
-                look-at="[gps-camera]"
-                align="center"
-                gps-entity-place="latitude:24.7920481;longitude:120.9660243;"
-            ></a-text> -->
-            
-            <a-text
-                value="Patung diponogoro" 
-                scale="15 15 15"
-                look-at="[gps-camera]"
-                align="center"
-                gps-entity-place="latitude:24.793130;longitude:120.965208;"
-            ></a-text> 
-
-            <a-text
-                value="Patung Kartini" 
-                scale="15 15 15"
-                look-at="[gps-camera]"
-                align="center"
-                gps-entity-place="latitude:24.792662;longitude:120.964834;"
-            ></a-text>
-            
-            <a-text
-                value="Patung Thamrin" 
-                scale="15 15 15"
-                look-at="[gps-camera]"
-                align="center"
-                gps-entity-place="latitude:24.792667;longitude:120.965747;"
-            ></a-text>
-            
-                
-                
-        </a-scene>
-    </body>
-</html>
+</html> 
