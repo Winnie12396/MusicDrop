@@ -1,5 +1,6 @@
 let x = 0
 let buffer
+//let buffer2
 let w = 512
 let h = 512
 
@@ -11,11 +12,12 @@ let locked = false;
 let xOffset = 0.0;
 let yOffset = 0.0;
 
-let value = 0;
+let value = 255;
 
 
 function preload(){
   buffer = createGraphics(w, h)  
+  //buffer2 = createGraphics(w, h)  
 }
 
 function setup() {
@@ -36,33 +38,40 @@ function setup() {
   //buffer.fill("cyan")
   //buffer.text("Hello!", 50, 50)
   
+  //createBubbles() 
+  
 }
 
 
 function draw(){
   
-  buffer.background("DarkSalmon")
+  buffer.background(0);
   
-  buffer.fill(value);
-  buffer.rect(200, 200, 200, 200);
+  buffer.fill(255, 255, 255, value);
+  buffer.circle(250, 400, 800);
   
-  //buffer.fill(255,0, 255, 100)
-  buffer.fill(color(250, 0, 250, 50))  
-  buffer.rect(mouseX, mouseY-100, 100, 100)
-  buffer.fill(255, 255, 255)
-  //buffer.text("Hello p5!", x, 50)
-  //buffer.text("x:" + x, 100, 100)
-  buffer.text("mouseX:" + mouseX, 100, 150)
-  buffer.text("bX:" + bx, 150, 50)
-  //buffer.text("See how mouseX is global?", 100, 200, 400, 300)
-  //img = buffer.get()
-  //x += 1
+  //buffer.fill(color(250, 0, 250, 50))  
+  //buffer.rect(mouseX, mouseY-100, 100, 100)
+  //buffer.fill(255, 255, 255)
+  //buffer.text("mouseX:" + mouseX, 100, 150)
+  //buffer.text("bX:" + bx, 150, 50)
+  //buffer.text("value:" + value, 300, 50)
+
+  //buffer2.background("yellow")
+
   if (x > width)x = 0
 
   let data =  buffer.drawingContext.canvas.toDataURL()
-  let myPlane = document.getElementById('myPlane')
-  myPlane.setAttribute("material", "src", `url(${data});`);
-  myPlane.setAttribute("material", "side", "double");
+  //let data2 =  buffer2.drawingContext.canvas.toDataURL()
+  
+  let buttonPut = document.getElementById('buttonPut')
+  buttonPut.setAttribute("material", "src", `url(${data});`);
+  buttonPut.setAttribute("material", "side", "double");
+  
+  //let chooseMusic = document.getElementById('chooseMusic')
+  //chooseMusic.setAttribute("material", "src", `url(${data2});`);
+  //lchooseMusic.setAttribute("material", "side", "double");
+  
   
   let r = map(x, 0, width,0, 360)
   
@@ -71,25 +80,31 @@ function draw(){
 
 }
 
-function mouseDragged(){
-  fill("red");
-  ellipse(mouseX, mouseY, x);
-  
-}
+//function mouseDragged(){
+//  fill("red");
+//  ellipse(mouseX, mouseY, x);  
+//}
 
 function mousePressed(){
   print("clicked")
+  //value = 180;
+  
+  
 }
 
 function mouseClicked() {
-  if (value === 0) {
-    value = 255;
-  } else {
-    value = 0;
-  }
+  //value = 255;
 }
 
-function createBubbles(){}
+function mouseReleased() {
+  
+  //value = 255;
+  
+}
+
+function createBubbles(){
+  
+}
 
 // UTILITY
 
