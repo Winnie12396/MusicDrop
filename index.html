@@ -7,11 +7,15 @@
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.js"></script> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
     <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
     <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script>
     <script src="/script.js" defer></script>
+    
+      <!-- for firebase-->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-analytics.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/firebase@6.1.0/firebase.js"></script>
+    
   </head>
 
   <body>
@@ -34,26 +38,6 @@
         <img id="magnifier" src="https://cdn.glitch.global/89483f63-ef3d-4744-8f4c-8573d2216bff/magnifier?v=1703513224112">
        </a-assets>
       
-      <!--<a-text
-        value="This content will always face you."
-        look-at="[gps-camera]"
-        scale="12 12 12"
-        gps-entity-place="latitude: 24.80212; longitude: 120.97580;"
-      ></a-text>
-
-      <a-text
-        value="AAA."
-        look-at="[gps-camera]"
-        scale="120 120 120"
-        gps-entity-place="latitude: 24.79112; longitude: 120.97480;"
-      ></a-text>
-
-      <a-box
-        look-at="[gps-camera]"
-        scale="5 5 5"
-        color="tomato"
-        gps-entity-place="latitude: 24.79268; longitude: 120.96535;"
-      ></a-box> -->
 
       <!--<a-entity
         look-at="[gps-camera]"
@@ -69,7 +53,14 @@
         gltf-model="https://cdn.glitch.global/e736c334-0e89-43a8-8057-317fdec0b1ac/target.gltf?v=1702898139269"
       ></a-entity> -->
       
-
+      <a-entity
+        look-at="[gps-camera]"
+        scale="5 5 5"
+        gps-entity-place="latitude: 24.79619; longitude: 120.965503;"
+        gltf-model="https://cdn.glitch.global/e736c334-0e89-43a8-8057-317fdec0b1ac/target.gltf?v=1702898139269"
+        id="tobecloned"
+        visible="false"
+      ></a-entity>
       
 
       <a-camera gps-camera rotation-reader positionminaccuracy: 1; gpsmindistance: 1 wasd-controls-enabled="false" look-controls mouse-cursor> 
@@ -115,6 +106,7 @@
           side="single"
           scale="2, 0.47"
           position="0 2.112 1"
+          musicdrop
           ></a-entity>
           
           <a-entity id="music2"
@@ -125,6 +117,7 @@
           side="single"
           scale="2, 0.47"
           position="0 1.608 1"
+          musicdrop
           ></a-entity>
           
           <a-entity id="music3"
@@ -135,6 +128,7 @@
           side="single"
           scale="2, 0.47"
           position="0 1.104 1"
+          musicdrop
           ></a-entity>
           
           <a-entity id="music4"
@@ -145,6 +139,7 @@
           side="single"
           scale="2, 0.47"
           position="0 0.6 1"
+          musicdrop
           ></a-entity>
           
           <a-entity id="music5"
@@ -155,46 +150,113 @@
           side="single"
           scale="2, 0.47"
           position="0 0.096 1"
+          musicdrop
           ></a-entity>
           
-          <a-image id="img1" src="#8" position="-0.77 2.111 1" width="0.465" height="0.465" opacity="0"></a-image>
-          
-          <a-image id="img2" src="#day6" position="-0.77 1.607 1" width="0.465" height="0.465" opacity="0"></a-image>
-          
-          <a-image id="img3" src="#nj" position="-0.77 1.103 1" width="0.465" height="0.465" opacity="0"></a-image>
-          
-          <a-image id="img4" src="#sea" position="-0.77 0.599 1" width="0.465" height="0.465" opacity="0"></a-image>
-          
-          <a-image id="img5" src="#blue" position="-0.77 0.095 1" width="0.465" height="0.465" opacity="0"></a-image>
-          
-          <a-image id="img6" src="#magnifier" position="1.34 3.25 0" width="0.345" height="0.345" opacity="0"></a-image>
-          
-          <a-text id="text1" value="Hai Cheng" color="#6BA2E4" position="-0.47 2.216 1" scale="0.55 0.55" opacity="0"></a-text>
-          
-          <a-text id="text2" value="Where the sea sleeps" color="#6BA2E4" position="-0.47 1.712 1" scale="0.55 0.55" opacity="0"></a-text>
-          
-          <a-text id="text3" value="Hype Boy" color="#6BA2E4" position="-0.47 1.208 1" scale="0.55 0.55" opacity="0"></a-text>
-          
-          <a-text id="text4" value="How Far I'll Go" color="#6BA2E4" position="-0.47 0.704 1" scale="0.55 0.55" opacity="0"></a-text>
-          
-          <a-text id="text5" value="Where Our Blue Is" color="#6BA2E4" position="-0.47 0.2 1" scale="0.55 0.55" opacity="0"></a-text>
-          
-          <a-text id="name1" value="Xu Ming Hao" color="#6BA2E4" position="-0.45 2.016 1" scale="0.3, 0.3" opacity="0"></a-text>
-          
-          <a-text id="name2" value="Day6" color="#6BA2E4" position="-0.45 1.512 1" scale="0.3, 0.3" opacity="0"></a-text>
-          
-          <a-text id="name3" value="New Jeans" color="#6BA2E4" position="-0.45 1.008 1" scale="0.3, 0.3" opacity="0"></a-text>
-          
-          <a-text id="name4" value="Auli'i Cravalho" color="#6BA2E4" position="-0.45 0.504 1" scale="0.3, 0.3" opacity="0"></a-text>
-          
+          <a-image id="img1" src="#8" position="-0.77 2.111 1" width="0.465" height="0.465" opacity="0"></a-image>          
+          <a-image id="img2" src="#day6" position="-0.77 1.607 1" width="0.465" height="0.465" opacity="0"></a-image>          
+          <a-image id="img3" src="#nj" position="-0.77 1.103 1" width="0.465" height="0.465" opacity="0"></a-image>          
+          <a-image id="img4" src="#sea" position="-0.77 0.599 1" width="0.465" height="0.465" opacity="0"></a-image>          
+          <a-image id="img5" src="#blue" position="-0.77 0.095 1" width="0.465" height="0.465" opacity="0"></a-image>          
+          <a-image id="img6" src="#magnifier" position="1.34 3.25 0" width="0.345" height="0.345" opacity="0"></a-image>          
+          <a-text id="text1" value="Hai Cheng" color="#6BA2E4" position="-0.47 2.216 1" scale="0.55 0.55" opacity="0"></a-text>          
+          <a-text id="text2" value="Where the sea sleeps" color="#6BA2E4" position="-0.47 1.712 1" scale="0.55 0.55" opacity="0"></a-text>          
+          <a-text id="text3" value="Hype Boy" color="#6BA2E4" position="-0.47 1.208 1" scale="0.55 0.55" opacity="0"></a-text>          
+          <a-text id="text4" value="How Far I'll Go" color="#6BA2E4" position="-0.47 0.704 1" scale="0.55 0.55" opacity="0"></a-text>        
+          <a-text id="text5" value="Where Our Blue Is" color="#6BA2E4" position="-0.47 0.2 1" scale="0.55 0.55" opacity="0"></a-text>         
+          <a-text id="name1" value="Xu Ming Hao" color="#6BA2E4" position="-0.45 2.016 1" scale="0.3, 0.3" opacity="0"></a-text>          
+          <a-text id="name2" value="Day6" color="#6BA2E4" position="-0.45 1.512 1" scale="0.3, 0.3" opacity="0"></a-text>          
+          <a-text id="name3" value="New Jeans" color="#6BA2E4" position="-0.45 1.008 1" scale="0.3, 0.3" opacity="0"></a-text>         
+          <a-text id="name4" value="Auli'i Cravalho" color="#6BA2E4" position="-0.45 0.504 1" scale="0.3, 0.3" opacity="0"></a-text>          
           <a-text id="name5" value="Kitani Tatsuya" color="#6BA2E4" position="-0.45 0 1" scale="0.3 0.3" opacity="0"></a-text>
-          
-          
-          <script src="ui.js"></script>
+                    
         </a-box>
         
       </a-camera>
     </a-scene>
+    
+    <script>
+      var sceneEl = document.querySelector('a-scene');      
+      let cloneThis = document.getElementById("tobecloned");
+      
+      
+      AFRAME.registerComponent('musicdrop', {
+        init: function () {
+          var el = this.el; 
+          
+          el.addEventListener('click', async function () {
+            var coordinate = await retrieveData("district1", "000");
+            placeTarget(coordinate[0], coordinate[1]);
+            console.log("placed");
+          });        
+        }
+      });
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyBsxfDECSySseubryQCaJzpvSjokkGa7eg",
+        authDomain: "armusicdrop.firebaseapp.com",
+        projectId: "armusicdrop",
+        storageBucket: "armusicdrop.appspot.com",
+        messagingSenderId: "508434200288",
+        appId: "1:508434200288:web:cda479ef335fa188034285",
+        measurementId: "G-BZQ63702XY",
+        databaseURL: "https://armusicdrop-default-rtdb.firebaseio.com/",
+      };
+
+
+      firebase.initializeApp(firebaseConfig);
+      const database = firebase.database();
+
+
+      function updateUserData(date, time, long, lat, link) {
+        var postData = {
+          date: date,
+          time: time,
+          long: long,
+          lat: lat,
+          link: link
+        };
+
+        return firebase.database().ref().update(postData);
+      }
+
+
+      async function retrieveData(district, itemNumber) {
+        var long, lat;
+        await database.ref("/district1/001/long").once("value").then((snapshot) => {
+          if (snapshot.exists()) {
+            long = snapshot.val();
+            console.log(long);
+          }
+        }).catch((error) => {
+          console.error(error);
+        });
+        await database.ref("/district1/001/lat").once("value").then((snapshot) => {
+          if (snapshot.exists()) {
+            lat = snapshot.val();
+            console.log(lat);
+          }
+        }).catch((error) => {
+          console.error(error);
+        });
+        return [lat, long];
+
+      }
+      
+      function placeTarget(lat, long){
+        var entityEl = cloneThis.cloneNode(true);
+        var coordinate = "latitude:" + lat + ";longitude:" + long + ";";
+        console.log(coordinate);
+        entityEl.removeAttribute("gps-entity-place");
+        entityEl.setAttribute('gps-entity-place', {latitude:lat, longitude:long}, true);
+        entityEl.removeAttribute("id", "tobecloned");
+        entityEl.setAttribute("visible", true);
+        sceneEl.appendChild(entityEl);
+      }
+      
+      
+    </script>
+
   </body>
 
 </html>
