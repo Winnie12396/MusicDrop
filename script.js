@@ -24,6 +24,7 @@ var name2El = sceneEl.querySelector('#name2');
 var name3El = sceneEl.querySelector('#name3');
 var name4El = sceneEl.querySelector('#name4'); 
 var name5El = sceneEl.querySelector('#name5'); 
+
 var clickables = document.querySelectorAll('.clickable');
 
 startButtonEl.addEventListener('click', function(){
@@ -160,12 +161,6 @@ function ui(){
     buttonPutEl.setAttribute("material", "color", "white");
       
 }
-
-
-
-
-
-
 
 
 
