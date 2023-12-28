@@ -1,46 +1,43 @@
-var sceneEl = document.querySelector('a-scene');
-var buttonPutEl = sceneEl.querySelector('#buttonPut');
-var chooseMusicEl = sceneEl.querySelector('#chooseMusic'); 
-var searchEl = sceneEl.querySelector('#search'); 
-var music1El = sceneEl.querySelector('#music1'); 
-var music2El = sceneEl.querySelector('#music2'); 
-var music3El = sceneEl.querySelector('#music3'); 
-var music4El = sceneEl.querySelector('#music4'); 
-var music5El = sceneEl.querySelector('#music5'); 
-var image1El = sceneEl.querySelector('#img1'); 
-var image2El = sceneEl.querySelector('#img2'); 
-var image3El = sceneEl.querySelector('#img3'); 
-var image4El = sceneEl.querySelector('#img4'); 
-var image5El = sceneEl.querySelector('#img5'); 
-var image6El = sceneEl.querySelector('#img6'); 
-var startButtonEl = sceneEl.querySelector('#startButton'); 
-var text1El = sceneEl.querySelector('#text1'); 
-var text2El = sceneEl.querySelector('#text2'); 
-var text3El = sceneEl.querySelector('#text3');
-var text4El = sceneEl.querySelector('#text4'); 
-var text5El = sceneEl.querySelector('#text5'); 
-var name1El = sceneEl.querySelector('#name1'); 
-var name2El = sceneEl.querySelector('#name2'); 
-var name3El = sceneEl.querySelector('#name3');
-var name4El = sceneEl.querySelector('#name4'); 
-var name5El = sceneEl.querySelector('#name5'); 
+  var sceneEl = document.querySelector('a-scene');
+	var buttonPutEl = sceneEl.querySelector('#buttonPut');
+  var chooseMusicEl = sceneEl.querySelector('#chooseMusic'); 
+  var searchEl = sceneEl.querySelector('#search'); 
+  var music1El = sceneEl.querySelector('#music1'); 
+  var music2El = sceneEl.querySelector('#music2'); 
+  var music3El = sceneEl.querySelector('#music3'); 
+  var music4El = sceneEl.querySelector('#music4'); 
+  var music5El = sceneEl.querySelector('#music5'); 
+  var image1El = sceneEl.querySelector('#img1'); 
+  var image2El = sceneEl.querySelector('#img2'); 
+  var image3El = sceneEl.querySelector('#img3'); 
+  var image4El = sceneEl.querySelector('#img4'); 
+  var image5El = sceneEl.querySelector('#img5'); 
+  var image6El = sceneEl.querySelector('#img6'); 
+  var startButtonEl = sceneEl.querySelector('#startButton'); 
+  var text1El = sceneEl.querySelector('#text1'); 
+  var text2El = sceneEl.querySelector('#text2'); 
+  var text3El = sceneEl.querySelector('#text3');
+  var text4El = sceneEl.querySelector('#text4'); 
+  var text5El = sceneEl.querySelector('#text5'); 
+  var name1El = sceneEl.querySelector('#name1'); 
+  var name2El = sceneEl.querySelector('#name2'); 
+  var name3El = sceneEl.querySelector('#name3');
+  var name4El = sceneEl.querySelector('#name4'); 
+  var name5El = sceneEl.querySelector('#name5'); 
 
-var clickables = document.querySelectorAll('.clickable');
+	var clickables = document.querySelectorAll('.clickable');
 
 startButtonEl.addEventListener('click', function(){
-  
   startButtonEl.setAttribute('opacity', '0');
   startButtonEl.setAttribute('width', '0.0001');
   buttonPutEl.setAttribute('opacity', '1');
   buttonPutEl.setAttribute("material", "opacity", "1");
-  
 });
 
 
 buttonPutEl.addEventListener('click', function(){
   
   if(this.getAttribute('opacity') === '1'){
-    
     chooseMusicEl.setAttribute("material", "opacity", "1");
     searchEl.setAttribute("material", "opacity", "1");
     music1El.setAttribute("material", "opacity", "1");
@@ -135,9 +132,8 @@ image5El.addEventListener('click', function(){
 });
 
 
-
+//this function is used to close the ui panel, for now it's implemented by adjusting opacity
 function ui(){
-        
     chooseMusicEl.setAttribute("material", "opacity", "0");
     searchEl.setAttribute("material", "opacity", "0");
     music1El.setAttribute("material", "opacity", "0");
@@ -165,6 +161,7 @@ function ui(){
     buttonPutEl.setAttribute("material", "color", "white");
       
 }
+
 
 
 
