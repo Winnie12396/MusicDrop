@@ -7,7 +7,6 @@
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-    <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>
     <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script>
     <script src="/script.js" defer></script>
     
@@ -29,16 +28,18 @@
       
       <a-entity id="mouseCursor" cursor="rayOrigin: mouse"></a-entity>
       
-       <a-assets>
-        <img id="8" src="https://cdn.glitch.global/89483f63-ef3d-4744-8f4c-8573d2216bff/8?v=1703503885351">
-        <img id="day6" src="https://cdn.glitch.global/89483f63-ef3d-4744-8f4c-8573d2216bff/day6?v=1703508466374">
-        <img id="nj" src="https://cdn.glitch.global/89483f63-ef3d-4744-8f4c-8573d2216bff/nj?v=1703508893654">
-        <img id="sea" src="https://cdn.glitch.global/89483f63-ef3d-4744-8f4c-8573d2216bff/sea?v=1703509079108">
-        <img id="blue" src="https://cdn.glitch.global/89483f63-ef3d-4744-8f4c-8573d2216bff/blue?v=1703509227911">
-        <img id="magnifier" src="https://cdn.glitch.global/89483f63-ef3d-4744-8f4c-8573d2216bff/magnifier?v=1703513224112">
-        <img id="start" src="https://cdn.glitch.global/89483f63-ef3d-4744-8f4c-8573d2216bff/start.png?v=1703681554958">
-       </a-assets>
+      <!-- preload assets -->
+      <a-assets>
+       <img id="8" src="https://cdn.glitch.global/89483f63-ef3d-4744-8f4c-8573d2216bff/8?v=1703503885351">
+       <img id="day6" src="https://cdn.glitch.global/89483f63-ef3d-4744-8f4c-8573d2216bff/day6?v=1703508466374">
+       <img id="nj" src="https://cdn.glitch.global/89483f63-ef3d-4744-8f4c-8573d2216bff/nj?v=1703508893654">
+       <img id="sea" src="https://cdn.glitch.global/89483f63-ef3d-4744-8f4c-8573d2216bff/sea?v=1703509079108">
+       <img id="blue" src="https://cdn.glitch.global/89483f63-ef3d-4744-8f4c-8573d2216bff/blue?v=1703509227911">
+       <img id="magnifier" src="https://cdn.glitch.global/89483f63-ef3d-4744-8f4c-8573d2216bff/magnifier?v=1703513224112">
+       <img id="start" src="https://cdn.glitch.global/89483f63-ef3d-4744-8f4c-8573d2216bff/start.png?v=1703681554958">
+      </a-assets>
       
+      <!-- 目前放target是用複製再改參數的方式，因為create有點問題，這一個target是原本就在場景中，供複製用的 -->
       <a-entity
         look-at="[gps-camera]"
         scale="5 5 5"
@@ -51,6 +52,7 @@
 
       <a-camera gps-camera rotation-reader positionminaccuracy: 1; gpsmindistance: 1 wasd-controls-enabled="false" look-controls mouse-cursor> 
       
+        <!-- 這裡面包的是按下圓形按鈕後出現的ui選單 -->
         <a-box position="0 -1 -3" rotation="0 0 0" material="side: double; color: #EF2D5E; opacity: 0" >
           <a-entity id="buttonPut"
           class="clickable"
@@ -84,6 +86,7 @@
           opacity="0"
           ></a-entity>
           
+          <!-- 這些是按了會放下target的按鈕 -->
           <a-entity id="music1"
           class="clickable"
           shadow="cast:false;"
@@ -92,6 +95,7 @@
           side="single"
           scale="2, 0.47"
           position="0 2.112 1"
+          musicurl="https://www.youtube.com/watch?v=C_eSHj7W54E"
           musicdrop
           ></a-entity>
           
@@ -103,6 +107,7 @@
           side="single"
           scale="2, 0.47"
           position="0 1.608 1"
+          musicurl="https://www.youtube.com/watch?v=_NmzMzjoJyk"
           musicdrop
           ></a-entity>
           
@@ -114,6 +119,7 @@
           side="single"
           scale="2, 0.47"
           position="0 1.104 1"
+          musicurl="https://www.youtube.com/watch?v=11cta61wi0g"
           musicdrop
           ></a-entity>
           
@@ -125,6 +131,7 @@
           side="single"
           scale="2, 0.47"
           position="0 0.6 1"
+          musicurl="https://www.youtube.com/watch?v=cPAbx5kgCJo"
           musicdrop
           ></a-entity>
           
@@ -136,9 +143,11 @@
           side="single"
           scale="2, 0.47"
           position="0 0.096 1"
+          musicurl="https://www.youtube.com/watch?v=zuoVd2QNxJo"          
           musicdrop
           ></a-entity>
           
+          <!-- 歌曲選單，目前沒有搜尋功能，只能放我們列的這幾首 -->
           <a-image id="img1" src="#8" position="-0.77 2.111 1" width="0.465" height="0.465" opacity="0"></a-image>          
           <a-image id="img2" src="#day6" position="-0.77 1.607 1" width="0.465" height="0.465" opacity="0"></a-image>          
           <a-image id="img3" src="#nj" position="-0.77 1.103 1" width="0.465" height="0.465" opacity="0"></a-image>          
@@ -168,26 +177,36 @@
       let cloneThis = document.getElementById("tobecloned");
       var startEl = document.getElementById("startButton");
       let gpsArr = [];
+      let currentPosition = [];
+      let prePosition = [];
+      let currentDistrict = "district2";
+      let preDistrict = "";
       
       AFRAME.registerComponent('musicdrop', {
         init: function () {
           var el = this.el; 
           
           el.addEventListener('click', async function () {
-            var coordinate = await retrieveData("district1", "000");
-            placeTarget(coordinate[0], coordinate[1]);
-            console.log("placed");
-            //snapshotToArray("district1");
             
-          });        
+            //comeFindMe();
+            var lat = getRandom(24.79390, 24.79210);
+            var long = getRandom(120.96303, 120.96402);
+            var url = this.getAttribute("musicurl");
+            placeTarget(lat.toString(), long.toString(), url);  //抓自己的經緯度和連結->放target，demo先用亂數
+            uploadNewTarget(currentDistrict, 20231228, lat, url, long, 1600);    //按鈕需要冷卻時間，不然很容易誤觸   //或是限制數量
+          });
         }
       });
       
-      startEl.addEventListener('click', function(){
-          loadPage();
+      startEl.addEventListener('click', function(){ //press start button
+        //comeFindMe();   // 抓自己經緯度->抓所在區域->load，demo先寫死
+        //getCurrentDistrict();
+        loadPage(currentDistrict);
+        loadPage("district3");
+        loadPage("district4");
       });
 
-      const firebaseConfig = {
+      const firebaseConfig = {    //
         apiKey: "AIzaSyBsxfDECSySseubryQCaJzpvSjokkGa7eg",
         authDomain: "armusicdrop.firebaseapp.com",
         projectId: "armusicdrop",
@@ -203,22 +222,9 @@
       const database = firebase.database();
 
 
-      function updateUserData(date, time, long, lat, link) {
-        var postData = {
-          date: date,
-          time: time,
-          long: long,
-          lat: lat,
-          link: link
-        };
-
-        return firebase.database().ref().update(postData);
-      }
-
-
-      async function retrieveData(district, itemNumber) {
+      async function retrieveData(district, itemNumber) {  //撈指定target的經緯度，這目前沒有用到
         var long, lat;
-        await database.ref("/district1/001/long").once("value").then((snapshot) => {
+        await database.ref("/" + district + "/" + itemNumber + "/long").once("value").then((snapshot) => {
           if (snapshot.exists()) {
             long = snapshot.val();
             console.log(long);
@@ -226,7 +232,7 @@
         }).catch((error) => {
           console.error(error);
         });
-        await database.ref("/district1/001/lat").once("value").then((snapshot) => {
+        await database.ref("/" + district + "/" + itemNumber + "/lat").once("value").then((snapshot) => {
           if (snapshot.exists()) {
             lat = snapshot.val();
             console.log(lat);
@@ -238,30 +244,28 @@
 
       }
       
-      function placeTarget(lat, long){
+      function placeTarget(lat, long, link){  //用新增DOM元素的方式，把target丟到頁面中
         var entityEl = cloneThis.cloneNode(true);
-        var coordinate = "latitude:" + lat + ";longitude:" + long + ";";
-        //console.log(coordinate);
+        //var coordinate = "latitude:" + lat + ";longitude:" + long + ";";
         entityEl.removeAttribute("gps-entity-place");
         entityEl.setAttribute('gps-entity-place', {latitude:lat, longitude:long}, true);
         entityEl.removeAttribute("id", "tobecloned");
         entityEl.setAttribute("visible", true);
+        entityEl.setAttribute("link", "href", link)
         sceneEl.appendChild(entityEl);
       }
       
-      async function loadPage(){
-        // 先判斷所在區域
-        //console.log(gpsArr);
-        await snapshotToArray("district3");
-        //console.log(gpsArr);
+      async function loadPage(dis){  //從firebase撈指定區域的所有target然後放下去  //目前沒有設定要渲染到多遠
+        
+        await snapshotToArray(dis);
         for (let i = 0; i < gpsArr.length; i++){
-          placeTarget(gpsArr[i][0].toString(), gpsArr[i][1].toString());
+          placeTarget(gpsArr[i][0].toString(), gpsArr[i][1].toString(), gpsArr[i][2].toString());
         }
         
         
       }
       
-      async function snapshotToArray(district) {
+      async function snapshotToArray(district) {  //抓某一區的資料，然後把那區所有target的經緯度跟連結放到gpsArr的陣列中
         let dataArr = [];
         gpsArr = [];
         await database.ref("/" + district).once("value").then((snapshot) => {
@@ -280,14 +284,93 @@
         //console.log(dataArr[0].lat, dataArr[0].long);  // get the gps of that element
         
         for (let i = 0; i < dataArr.length; i++){
-          gpsArr.push([dataArr[i].lat, dataArr[i].long]);
+          gpsArr.push([dataArr[i].lat, dataArr[i].long, dataArr[i].link]);
         }
         
       };
       
+      function comeFindMe() {  //抓自己的經緯度，demo暫時沒有用到，因為不確定他有沒有正確運作
+        
+        function success(position) {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          prePosition = currentPosition;
+          currentPosition = [latitude, longtitude];
+        }
+
+        function error() {
+          console.log("Unable to retrieve your location");
+          prePosition = currentPosition;
+          currentPosition = ["24.7921", "120.96601"];  //如果沒抓到，就用寫死的
+        }
+
+        if (!navigator.geolocation) {
+          console.log("Geolocation is not supported by your browser");
+        } else {
+          console.log("Locating…");
+          navigator.geolocation.getCurrentPosition(success, error);
+        }
+        
+        //console.log("cP:" + currentPosition);
+      }
+
+
+      function getCurrentDistrict(){  //用所在經緯度抓現在所在的區，目前沒有設定超出我們所畫的區域會怎樣
+        var dis = "";
+        if(currentPosition[0]>24.793906 && currentPosition[0]<=24.794837 && currentPosition[1]>=120.963033 && currentPosition[1]<=120.966928){
+          dis = "district1";
+        }
+        else if(currentPosition[0]>=24.792100 && currentPosition[0]<=24.793906 && currentPosition[1]>=120.963033 && currentPosition[1]<=120.964020){
+          dis = "district2";
+        }
+        else if(currentPosition[0]>=24.792100 && currentPosition[0]<24.793200 && currentPosition[1]>120.964020 && currentPosition[1]<=120.966123){
+          dis = "distric3";
+        }
+        else if(currentPosition[0]>=24.793200 && currentPosition[0]<=24.793906 && currentPosition[1]>120.964020 && currentPosition[1]<=120.966123){
+          dis = "district4";
+        }
+        else if(currentPosition[0]>=24.792100 && currentPosition[0]<=24.793906 && currentPosition[1]>120.966123 && currentPosition[1]<=120.966928){
+          dis = "district5";
+        }
+        
+        preDistrict = currentDistrict;
+        currentDistrict = dis;
+        console.log("currently at:" + currentDistrict);
+
+      }
       
+      function getRandom(min, max) {
+        return Math.random() * (max - min) + min;
+      }
       
+      async function uploadNewTarget(district, date, lat, link, long, time){
+        var number = 0;  //the key of this target in database
+        await database.ref("/" + district).once("value").then((snapshot) => {  //抓現在所在那區有幾個，才知道接下來要編幾號
+          if (snapshot.exists()) {
+            snapshot.forEach(childSnapshot => {
+              number++;
+            });
+          }
+        }).catch((error) => {
+          console.error(error);
+        });
+        
+        firebase.database().ref('/' + district + '/' + number.toString()).set({  //upload
+          date: date,
+          lat: lat,
+          link: link,
+          long: long,
+          time: time
+        }, (error) => {
+          if (error) {
+            console.log("write failed");
+          } else {
+            console.log("success");
+          }
+        });
+      }
       
+     
     </script>
       
       
