@@ -42,7 +42,7 @@
       <!-- 目前放target是用複製再改參數的方式，因為create有點問題，這一個target是原本就在場景中，供複製用的 -->
       <a-entity
         look-at="[gps-camera]"
-        scale="5 5 5"
+        scale="4 4 4"
         gps-entity-place="latitude: 24.79619; longitude: 120.965503;"
         gltf-model="https://cdn.glitch.global/e736c334-0e89-43a8-8057-317fdec0b1ac/target.gltf?v=1702898139269"
         id="tobecloned"
@@ -174,13 +174,13 @@
     
     <script>
       var sceneEl = document.querySelector('a-scene');
-      let cloneThis = document.getElementById("tobecloned");
+      let cloneThis = document.getElementById("tobecloned");  //選取要被複製的那顆
       var startEl = document.getElementById("startButton");
       let gpsArr = [];
       let currentPosition = [];
-      let prePosition = [];
+      let prePosition = [];  //存前一個抓到的位置，用來判斷改變
       let currentDistrict = "district2";
-      let preDistrict = "";
+      let preDistrict = "";  //區域同理
       
       AFRAME.registerComponent('musicdrop', {
         init: function () {
@@ -193,7 +193,8 @@
             var long = getRandom(120.96303, 120.96402);
             var url = this.getAttribute("musicurl");
             placeTarget(lat.toString(), long.toString(), url);  //抓自己的經緯度和連結->放target，demo先用亂數
-            uploadNewTarget(currentDistrict, 20231228, lat, url, long, 1600);    //按鈕需要冷卻時間，不然很容易誤觸   //或是限制數量
+            uploadNewTarget(currentDistrict, 20231228, lat, url, long, 1600);    //按鈕需要冷卻時間，不然很容易誤觸   //或是限制放的數量
+            loadPage(currentDistrict);
           });
         }
       });
@@ -289,9 +290,9 @@
         
       };
       
-      function comeFindMe() {  //抓自己的經緯度，demo暫時沒有用到，因為不確定他有沒有正確運作
+      function comeFindMe() {  //抓自己的經緯度，demo暫時沒有用到，因為不確定他有沒有正確運作  //不確定這裡會不會有時間差的問題，還沒試
         
-        function success(position) {
+        function success(position) {   //如果抓到的話，就把currentPosition更新為現在位置
           const latitude = position.coords.latitude;
           const longitude = position.coords.longitude;
           prePosition = currentPosition;
@@ -301,7 +302,7 @@
         function error() {
           console.log("Unable to retrieve your location");
           prePosition = currentPosition;
-          currentPosition = ["24.7921", "120.96601"];  //如果沒抓到，就用寫死的
+          currentPosition = ["24.7921", "120.96601"];  //如果沒抓到，就先給寫死的座標
         }
 
         if (!navigator.geolocation) {
@@ -345,7 +346,7 @@
       
       async function uploadNewTarget(district, date, lat, link, long, time){
         var number = 0;  //the key of this target in database
-        await database.ref("/" + district).once("value").then((snapshot) => {  //抓現在所在那區有幾個，才知道接下來要編幾號
+        await database.ref("/" + district).once("value").then((snapshot) => {  //抓現在所在那區有幾個，才知道接下來要編幾號  //還沒實作數量超過限制(使用者可以upload的數量限制or資料庫一區的數量上限)的狀況
           if (snapshot.exists()) {
             snapshot.forEach(childSnapshot => {
               number++;
@@ -355,7 +356,7 @@
           console.error(error);
         });
         
-        firebase.database().ref('/' + district + '/' + number.toString()).set({  //upload
+        firebase.database().ref('/' + district + '/' + number.toString()).set({  //目前上傳的日期時間是寫死的
           date: date,
           lat: lat,
           link: link,
